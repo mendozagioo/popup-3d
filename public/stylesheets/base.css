@@ -1,0 +1,367 @@
+/*
+   Base
+ ***************************/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+:focus {
+  outline: 0;
+}
+
+body {
+  line-height: 1;
+  color: black;
+  background: white;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+}
+
+blockquote, q {
+  quotes: "" "";
+}
+
+
+
+/*
+   Main
+****************************/
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: url(../img/) center center #fff;
+  background-size: cover, 100% 100%;
+  -webkit-perspective: 1000px;
+     -moz-perspective: 1000px;
+          perspective: 1000px;
+  -webkit-user-select: none;
+     -moz-user-select: -moz-none;
+          user-select: none;
+}
+
+
+
+/*
+   Scene
+****************************/
+
+.scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: translateY(100px) rotateX(-15deg) rotateY(0deg);
+     -moz-transform: translateY(100px) rotateX(-15deg) rotateY(0deg);
+          transform: translateY(100px) rotateX(-15deg) rotateY(0deg);
+  -moz-user-select: -moz-none;
+}
+
+
+
+/*
+   Book
+****************************/
+
+.book {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 600px;
+  margin-top: -300px;
+  -webkit-transform: rotateX(90deg);
+     -moz-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform-origin: -300px 300px;
+     -moz-transform-origin: -300px 300px;
+          transform-origin: -300px 300px;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+}
+
+.book.on-cover {
+  -webkit-transform: translateX(-200px) rotateX(29deg) rotateZ(-8deg) translateZ(100px);
+     -moz-transform: translateX(-200px) rotateX(29deg) rotateZ(-8deg) translateZ(100px);
+          transform: translateX(-200px) rotateX(29deg) rotateZ(-8deg) translateZ(100px);
+}
+
+.spreads {
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.spread {
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+          -webkit-transform-origin: left bottom;
+  -moz-transform-origin: left bottom;
+       transform-origin: left bottom;
+}
+
+.page-left {
+  position: absolute;
+  left: -400px;
+  width: 400px;
+  height: 600px;
+  border-radius: 20px 0 0 20px;
+  -webkit-transform-origin: bottom right;
+     -moz-transform-origin: bottom right;
+          transform-origin: bottom right;
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateY(180deg);
+     -moz-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.page-right {
+  position: absolute;
+  width: 400px;
+  height: 600px;
+  border-radius: 0 20px 20px 0;
+  -webkit-transform-origin: bottom left;
+     -moz-transform-origin: bottom left;
+          transform-origin: bottom left;
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.page-left:before {
+  border-radius: 20px 0 0 20px;
+}
+
+.page-right:before {
+  border-radius: 0 20px 20px 0;
+}
+
+.hotspot {
+  display: none;
+  cursor: pointer;
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: scale3d(.5, .5, .5) translateZ(5px);
+     -moz-transform: scale3d(.5, .5, .5) translateZ(5px);
+          transform: scale3d(.5, .5, .5) translateZ(5px);
+  -webkit-transition: all .3s;
+     -moz-transition: all .3s;
+          transition: all .3s;
+}
+
+.hotspot .indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  font-size: 50px;
+  line-height: 90px;
+  background: url(../img/hotspot-indicator-x.svg) no-repeat, url(../img/hotspot-indicator-arrow.svg) no-repeat;
+  background-position: 0 0, 0 0;
+  -webkit-transform: rotateX(-90deg) translateY(-60px);
+     -moz-transform: rotateX(-90deg) translateY(-60px);
+          transform: rotateX(-90deg) translateY(-60px);
+  -webkit-transition: all .75s .25s;
+     -moz-transition: all .75s .25s;
+          transition: all .75s .25s;
+  -webkit-animation: bob 2s infinite ease-in-out;
+     -moz-animation: bob 2s infinite ease-in-out;
+          animation: bob 2s infinite ease-in-out;
+}
+
+.hotspot.focused .indicator {
+  -webkit-animation: none;
+     -moz-animation: none;
+          animation: none;
+  -webkit-transform: rotateX(-90deg) translateY(-60px) rotateX(90deg) rotateZ(45deg);
+     -moz-transform: rotateX(-90deg) translateY(-60px) rotateX(90deg) rotateZ(45deg);
+          transform: rotateX(-90deg) translateY(-60px) rotateX(90deg) rotateZ(45deg);
+  background-position: 0 0, 0 -30px;
+}
+
+@-webkit-keyframes bob {
+  0% {
+    -webkit-transform: rotateX(-90deg) translateY(-60px);
+  }
+  50% {
+    -webkit-transform: rotateX(-90deg) translateY(-70px);
+  }
+  100% {
+    -webkit-transform: rotateX(-90deg) translateY(-60px);
+  }
+}
+
+@-moz-keyframes bob {
+  0% {
+    -moz-transform: rotateX(-90deg) translateY(-60px);
+  }
+  50% {
+    -moz-transform: rotateX(-90deg) translateY(-70px);
+  }
+  100% {
+    -moz-transform: rotateX(-90deg) translateY(-60px);
+  }
+}
+
+.intro .hotspot {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  width: 500px;
+  padding: 50px;
+  font-size: 42px;
+  line-height: 54px;
+  color: #fff;
+  background: rgba(159, 8, 7, .9);
+  border-radius: 20px;
+  -webkit-transform-origin: left bottom;
+     -moz-transform-origin: left bottom;
+          transform-origin: left bottom;
+}
+
+.intro .hotspot:hover {
+  background: rgba(222, 25, 24, .9);
+}
+
+.intro .page-left {
+  background: url(../img/) no-repeat 0 0 #E50C21;
+}
+
+.intro .page-right {
+  background: url(../img/) no-repeat -600px 0 #E50C21;
+}
+
+
+.cover .page-right {
+  background: url(../img/) no-repeat -600px 0 #8DC63F;
+  background-size: 1200px 600px;
+  -moz-transform-style: flat;
+}
+
+.back .page-left {
+  background: url(../img/) no-repeat 0 0 #8DC63F;
+  background-size: 1200px 600px;
+  -moz-transform-style: flat;
+}
+
+
+
+/*
+   Popups
+****************************/
+
+.popup {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  margin-top: -500px;
+  background-repeat: no-repeat;
+  -webkit-transform-origin: bottom center;
+  -moz-transform-origin: bottom center;
+  transform-origin: bottom center;
+}
+
+.page-left .popup {
+  background-position: 0 0;
+  -webkit-transform-origin: bottom right;
+     -moz-transform-origin: bottom right;
+          transform-origin: bottom right;
+  -webkit-transform: rotateZ(15deg);
+     -moz-transform: rotateZ(15deg);
+          transform: rotateZ(15deg);
+}
+
+.page-right .popup {
+  background-position: -400px 0;
+  -webkit-transform-origin: bottom left;
+     -moz-transform-origin: bottom left;
+          transform-origin: bottom left;
+  -webkit-transform: rotateZ(-15deg);
+     -moz-transform: rotateZ(-15deg);
+          transform: rotateZ(-15deg);
+}
+
+/*** Figures ***/
+
+.cake-left {
+  background: url(../img/cake-left.svg);
+}
+
+.cake-right {
+  background: url(../img/cake-right.svg);
+}
+
+.drag-notice {
+  position: absolute;
+  top: 50%;
+  left: 335px;
+  padding-left: 35px;
+  width: 200px;
+  color: #000;
+  background: url(../img/arrow.svg) no-repeat left 4px;
+  font-size: 30px;
+  -webkit-transform: translateZ(50px);
+     -moz-transform: translateZ(50px);
+          transform: translateZ(50px);
+  -webkit-transition: all .5s;
+     -moz-transition: all .5s;
+          transition: all .5s;
+  opacity: 0;
+}
+
+.drag-notice.shown {
+  opacity: 1;
+}
